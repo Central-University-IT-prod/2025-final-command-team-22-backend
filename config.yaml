@@ -1,0 +1,54 @@
+service:
+  database:
+    host: 'postgres'
+    user: 'user'
+    password: 'REDACTED'
+    port: 5432
+    name: 'db'
+    ssl-mode: 'disable'
+
+  clickhouse:
+    host: 'clickhouse'
+    port: 9000
+    database: 'coin_changes'
+    username: 'default'
+    password: 'REDACTED'
+
+backend:
+  host: "0.0.0.0"
+  port: 80
+  dev-mode: false
+  tls:
+    enabled: true
+    port: 443
+    cert-file: "/etc/ssl/fullchain.pem"
+    key-file: "/etc/ssl/privkey.pem"
+
+  cors:
+    prod:
+      allow-origins:
+        - "https://prod-team-22-t62v97db.REDACTED"
+        - "https://frontend-a2545f.pages.prodcontest.ru"
+    dev:
+      allow-origins:
+        - "http://localhost:5173"
+        - "http://REDACTED"
+        - "https://prod-team-22-t62v97db.REDACTED"
+        - "https://frontend-a2545f.pages.prodcontest.ru"
+
+
+  jwt:
+    user-token-secret: xifhew-9fh-9whf-9whfhwf9whq9f
+    user-token-expiration: 24h
+    business-token-secret: aafhewfsafsfasfsafsash53h343r2whq9f
+    business-token-expiration: 24h
+
+  qr:
+    code-length: 8
+
+settings:
+  timezone: 'Europe/Moscow'
+  debug: false
+  logger:
+    log-to-file: true
+    logs-dir: 'logs'
